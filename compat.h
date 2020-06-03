@@ -1,6 +1,10 @@
 
 #include <linux/version.h>
 
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(5,6,0)
+#define  __symbol_get kallsyms_lookup_name
+#endif
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
 static struct tracepoint *exec_tp;
 
